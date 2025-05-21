@@ -28,6 +28,8 @@ const Home = () => {
   const deleteBilgi = async (id) => {
     await axios.delete(`${url}${id}/`);
 
+// database de delete işlemi yapıldı ama browser da görmek için tamirci çalışmalı, bu yüzdendatabase den veri çekip tamirciyle diziye veri atan fonk getBilgiler i tekrar çağırdık
+
 getBilgiler()
 
   };
@@ -42,6 +44,15 @@ getBilgiler()
 }
 
 
+//! PUT (UPDATE)
+
+const putBilgiler=async(edit)=>{
+
+
+    await axios.put(`${url}${edit.id}/`,edit)
+
+    getBilgiler()
+}
 
 
   return (
@@ -49,7 +60,7 @@ getBilgiler()
 
 <AddBilgi  postBilgi={postBilgi}/>
 
-      <BilgiList tutorials={tutorials} deleteBilgi={deleteBilgi} />
+      <BilgiList tutorials={tutorials} deleteBilgi={deleteBilgi} putBilgiler={putBilgiler}/>
 
 
     </div>

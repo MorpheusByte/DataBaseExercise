@@ -1,13 +1,16 @@
 import React from 'react'
 import { AiFillDelete } from "react-icons/ai";
 import { FaEdit } from "react-icons/fa";
+import EditBilgi from './EditBilgi';
+import { useState } from 'react';
 
-const BilgiList = ({tutorials,deleteBilgi}) => {
+const BilgiList = ({tutorials,deleteBilgi,putBilgiler}) => {
 
 //    const deleteBilgi = async (id) => {
 //      await axios.delete(`${url}${id}/`);
 //    };
-    
+  const[edit,setEdit]=useState("")  
+
   return (
     <div className="container mt-4">
       <table className="table table-striped">
@@ -22,7 +25,7 @@ const BilgiList = ({tutorials,deleteBilgi}) => {
           </tr>
         </thead>
         <tbody>
-          {tutorials.map(({id,title,description}) => {
+          {tutorials.map(({ id, title, description }) => {
             return (
               <tr>
                 <th>{id}</th>
@@ -33,8 +36,7 @@ const BilgiList = ({tutorials,deleteBilgi}) => {
                     type="button"
                     size={22}
                     className="text-danger cursor-pointer"
-
-                    onClick={()=>deleteBilgi(id)}
+                    onClick={() => deleteBilgi(id)}
                   />
 
                   <FaEdit
@@ -43,7 +45,8 @@ const BilgiList = ({tutorials,deleteBilgi}) => {
                     size={20}
                     type="button"
                     className="me-2 text-warning cursor-pointer"
-                   
+
+                    onClick={()=>setEdit({id:id,title:title,description:description})}
                   />
                 </td>
               </tr>
@@ -51,7 +54,8 @@ const BilgiList = ({tutorials,deleteBilgi}) => {
           })}
         </tbody>
       </table>
-     
+
+    <EditBilgi edit={edit} setEdit={setEdit} putBilgiler={putBilgiler}/> 
     </div>
   );
 }
