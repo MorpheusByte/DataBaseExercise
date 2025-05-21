@@ -29,6 +29,7 @@ const Home = () => {
     const deleteBilgi = async(id)=>{
 
         await axios.delete(`${url}${id}/`)
+        getBilgiler()
 
     }
 
