@@ -4,7 +4,10 @@ import { FaEdit } from "react-icons/fa";
 
 const BilgiList = ({tutorials,deleteBilgi}) => {
 
-    console.log(tutorials)
+//    const deleteBilgi = async (id) => {
+//      await axios.delete(`${url}${id}/`);
+//    };
+    
   return (
     <div className="container mt-4">
       <table className="table table-striped">
@@ -30,6 +33,8 @@ const BilgiList = ({tutorials,deleteBilgi}) => {
                     type="button"
                     size={22}
                     className="text-danger cursor-pointer"
+
+                    onClick={()=>deleteBilgi(id)}
                   />
 
                   <FaEdit
@@ -38,8 +43,6 @@ const BilgiList = ({tutorials,deleteBilgi}) => {
                     size={20}
                     type="button"
                     className="me-2 text-warning cursor-pointer"
-
-                    onClick={()=>deleteBilgi(id)}
                    
                   />
                 </td>
@@ -50,7 +53,7 @@ const BilgiList = ({tutorials,deleteBilgi}) => {
       </table>
      
     </div>
-  )
+  );
 }
 
 export default BilgiList
