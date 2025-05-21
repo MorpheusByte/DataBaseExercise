@@ -24,10 +24,18 @@ const Home = () => {
         getBilgiler();
     },[])
 
+    //!Delete
+
+    const deleteBilgi = async(id)=>{
+
+        await axios.delete(`${url}${id}/`)
+
+    }
+
   return (
     <div>
       
-    <BilgiList tutorials={tutorials}/>
+    <BilgiList tutorials={tutorials} deleteBilgi={deleteBilgi}/>
 
     </div>
   )

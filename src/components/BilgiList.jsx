@@ -1,6 +1,8 @@
 import React from 'react'
+import { AiFillDelete } from "react-icons/ai";
+import { FaEdit } from "react-icons/fa";
 
-const BilgiList = ({tutorials}) => {
+const BilgiList = ({tutorials,deleteBilgi}) => {
 
     console.log(tutorials)
   return (
@@ -23,7 +25,7 @@ const BilgiList = ({tutorials}) => {
                 <th>{id}</th>
                 <td>{title}</td>
                 <td>{description}</td>
-                {/* <td className="text-center ">
+                <td className="text-center ">
                   <AiFillDelete
                     type="button"
                     size={22}
@@ -36,9 +38,11 @@ const BilgiList = ({tutorials}) => {
                     size={20}
                     type="button"
                     className="me-2 text-warning cursor-pointer"
+
+                    onClick={()=>deleteBilgi(id)}
                    
                   />
-                </td> */}
+                </td>
               </tr>
             );
           })}
